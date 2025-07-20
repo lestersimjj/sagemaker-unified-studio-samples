@@ -21,26 +21,42 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 3. QuickSight region > ap-southeast-1
 4. QuickSight account name > eg. quicksight-21072025
 5. For assigning permissions, click show more. Add anycompany-admin under Admin Pro group. Add anycompany-salesmarketing under Reader Pro group.
+6. Uncheck "Add Pixel-Perfect Reports"
+
+### 3. Create a VPC
+1. Resources to create: VPC and more
+2. Name the VPC: sagemaker-workshop
+3. Number of AZs: 3 public subnets, 3 private subnets
+4. NAT Gateway: In 1 AZ
+5. VPC Endpoints: None
+6. S3 Gateway Endpoint: 1
 
 ### 3. Create Amazon SageMaker Studio Domain
-
 1. Navigate to the Amazon SageMaker console
-2. Select "Studio" from the left navigation pane
-3. Click "Create domain"
-4. Follow the setup wizard:
-   - Provide domain name
-   - Select "AWS IAM Identity Center" as authentication method
-   - Configure default execution role
-   - Complete network and storage settings
-5. Create at least one user profile for yourself
+2. Select "Create a Unified Studio domain"
+3. Quick setup
+4. Expand Quick setup settings
+5. Domain Name: sagemaker-workshop-domain
+6. VPC: sagemaker-workshop
+7. Subnet: Select all 3 private subnets
+8. Leave the others as default
+9. Click continue
+10. Create IAM Identity Center User: dg-corp-admin
+11. Click Create Domain
 
-### 3. Enable QuickSight Blueprint in SageMaker Studio
+### 3. Enable QuickSight Blueprint in SageMaker Unified Studio
+1. Access the SageMaker Unified Studio console
+2. Click Blueprints > Select QuickSight > Click Enable
+3. Leave the others as default
+4. Click Enable blueprint
+5. Return back to SageMaker Unified Studio Console. Select Project Profiles > Click All Capabilities
+6. <img width="1488" height="329" alt="image" src="https://github.com/user-attachments/assets/738875b9-d5b4-4c17-9704-98158b87ab0a" />
+7. Under Blueprint deployment settings > Add blueprint deployment settings
+8. <img width="1475" height="619" alt="image" src="https://github.com/user-attachments/assets/50fe35ea-a79f-4365-911b-92aff807acec" />
+9. Blueprint deployment settings name: quicksight-blueprint
+10. Blueprint: Select QuickSight
+11. Click Add blueprint deployment settings
 
-1. Access the SageMaker Studio domain
-2. Navigate to the "Admin settings"
-3. Under "Apps", find the QuickSight Blueprint
-4. Click "Enable" and follow the configuration prompts
-5. Return to your user profile and add the QuickSight Blueprint
 
 ### 4. Download Workshop Data
 
