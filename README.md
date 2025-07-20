@@ -1,6 +1,7 @@
 # AWS Analytics Workshop
 This README guides participants through setting up a unified analytics environment using Amazon SageMaker Studio and visualizing data in Amazon QuickSight.
 
+AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
 ## Setup Instructions
 
 ### 1. IAM Identity Center Configuration
@@ -8,14 +9,20 @@ This README guides participants through setting up a unified analytics environme
 Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 
 1. Navigate to the IAM Identity Center console
-2. Complete the initial setup if not already configured
-3. Create or use an existing permission set with the following permissions:
-   - `AmazonSageMakerFullAccess`
-   - `AmazonQuicksightFullAccess`
-   - `IAMFullAccess` (for workshop purposes only - use more restrictive policies in production)
-4. Assign the permission set to your user
+2. Click Enable
+3. Create IAM Group > anycompany-admin
+4. Create IAM Group > anycompany-salesmarketing
+5. Create IAM User > dg-corp-admin. Add this user under anycompany-admin group.
+7. Create IAM User > dg-business-analyst. Add this user under anycompany-salesmarketing group.
 
-### 2. Create Amazon SageMaker Studio Domain
+### 2. Sign up for QuickSight
+1. Navigate to QuickSight console and sign up for QuickSight
+2. Authentication Method > Use AWS IAM Identity Center
+3. QuickSight region > ap-southeast-1
+4. QuickSight account name > eg. quicksight-21072025
+5. For assigning permissions, click show more. Add anycompany-admin under Admin Pro group. Add anycompany-salesmarketing under Reader Pro group.
+
+### 3. Create Amazon SageMaker Studio Domain
 
 1. Navigate to the Amazon SageMaker console
 2. Select "Studio" from the left navigation pane
