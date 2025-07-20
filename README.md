@@ -59,8 +59,31 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 
 ### 4. Download Workshop Data
 Download the required CSV dataset files from the following links:
-- [retail_sales_performance.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/retail_sales_performance.csv) (placeholder link)
-- [store_details.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/store_details.csv) (placeholder link)
+- [retail_sales_performance.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/retail_sales_performance.csv)
+- [store_details.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/store_details.csv)
+
+### 5. Opening SageMaker Unified Studio
+1. Select Open Unified Studio from your SageMaker domain created earlier
+2. Login with SSO using dg-corp-admin
+3. Click Create Project
+4. Project Name: sagemaker-workshop-project
+5. Project Profile: All capabilities
+6. Click Next
+7. Lakehouse Database: Change name to "lakehouse_db"
+8. QuickSight > Restrictured Folder Name: quicksight-sagemaker-folder
+9. Continue > Create Project
+
+### 6. Importing Datasets to SageMaker Unified Studio
+1. <img width="1499" height="771" alt="image" src="https://github.com/user-attachments/assets/588b4377-b7fb-4aa2-9cca-375e55c938a8" />
+2. Add data by uploading the CSV file
+3. <img width="841" height="758" alt="image" src="https://github.com/user-attachments/assets/a312ac16-3580-4d0e-bcc1-8997e96b164a" />
+
+
+### 7. Transforming Data in SageMaker Unified Studio
+
+### 8. Querying Transformed Data using Amazon Redshift
+
+### 9. 
 
 ## Workshop Modules
 
