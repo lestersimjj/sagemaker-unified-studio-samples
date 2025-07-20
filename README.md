@@ -14,7 +14,6 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
    - `AmazonQuicksightFullAccess`
    - `IAMFullAccess` (for workshop purposes only - use more restrictive policies in production)
 4. Assign the permission set to your user
-<img width="1920" height="1080" alt="Screenshot 2025-07-19 at 7 52 25 AM (2)" src="https://github.com/user-attachments/assets/6a4d2cec-e3d6-4dd2-9687-d4077c89c3f7" />
 
 ### 2. Create Amazon SageMaker Studio Domain
 
