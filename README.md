@@ -57,12 +57,10 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 10. Blueprint: Select QuickSight
 11. Click Add blueprint deployment settings
 
-
 ### 4. Download Workshop Data
-
 Download the required CSV dataset files from the following links:
-- [Sample Dataset 1](#) (placeholder link)
-- [Sample Dataset 2](#) (placeholder link)
+- [retail_sales_performance.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/retail_sales_performance.csv) (placeholder link)
+- [store_details.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/store_details.csv) (placeholder link)
 
 ## Workshop Modules
 
