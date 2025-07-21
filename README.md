@@ -2,6 +2,14 @@
 This README guides participants through setting up a unified analytics environment using Amazon SageMaker Studio and visualizing data in Amazon QuickSight.
 
 AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
+
+## Workshop Modules
+1. **Setting Up SageMaker Unified Studio**
+2. **Uploading Datasets to Unified Studio** - Learn how to import your CSV files into SageMaker
+3. **Setting up ETL Pipeline in Unified Studio** - Learn how to use Visual ETL Flows and Juypter Notebooks to process your data
+4. **Loading Data to Data Warehouse in Unified Studio** - Loading data to Redshift in SageMaker Unified Studio
+5. **Visualization with QuickSight** - Create interactive dashboards with datasets from Redshift
+
 ## Setup Instructions
 
 ### 1. IAM Identity Center Configuration
@@ -31,7 +39,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 5. VPC Endpoints: None
 6. S3 Gateway Endpoint: 1
 
-### 3. Create Amazon SageMaker Studio Domain
+### 4. Create Amazon SageMaker Studio Domain
 1. Navigate to the Amazon SageMaker console
 2. Select "Create a Unified Studio domain"
 3. Quick setup
@@ -44,7 +52,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 10. Create IAM Identity Center User: dg-corp-admin
 11. Click Create Domain
 
-### 3. Enable QuickSight Blueprint in SageMaker Unified Studio
+### 5. Enable QuickSight Blueprint in SageMaker Unified Studio
 1. Access the SageMaker Unified Studio console
 2. Click Blueprints > Select QuickSight > Click Enable
 3. Leave the others as default
@@ -57,12 +65,12 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 10. Blueprint: Select QuickSight
 11. Click Add blueprint deployment settings
 
-### 4. Download Workshop Data
+### 6. Download Workshop Data
 Download the required CSV dataset files from the following links:
 - [retail_sales_performance.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/retail_sales_performance.csv)
 - [store_details.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/store_details.csv)
 
-### 5. Opening SageMaker Unified Studio
+### 7. Opening SageMaker Unified Studio
 1. Select Open Unified Studio from your SageMaker domain created earlier
 2. Login with SSO using dg-corp-admin
 3. Click Create Project
@@ -73,7 +81,7 @@ Download the required CSV dataset files from the following links:
 8. QuickSight > Restrictured Folder Name: quicksight-sagemaker-folder
 9. Continue > Create Project
 
-### 6. Importing Datasets to SageMaker Unified Studio
+### 8. Importing Datasets to SageMaker Unified Studio
 1. Select Data > Click on the "+" button to add datasets to SageMaker Lakehouse > Select "Create Table"
 2. <img width="1499" height="771" alt="image" src="https://github.com/user-attachments/assets/588b4377-b7fb-4aa2-9cca-375e55c938a8" />
 3. Add data by uploading the retail_sales_perfomance.csv file
@@ -83,7 +91,7 @@ Download the required CSV dataset files from the following links:
 7. <img width="1493" height="531" alt="image" src="https://github.com/user-attachments/assets/4852cada-5e8f-49e0-8dc1-6b79b74b664f" />
 8. <img width="1501" height="665" alt="image" src="https://github.com/user-attachments/assets/a56edc62-462e-4b93-aa03-6245f513d4ad" />
 
-### 6. Add Federated Redshift Catalog 
+### 9. Add Federated Redshift Catalog 
 1. Data > "+" Button > Add connection
 2. Select Amazon Redshift
 4. Name: redshift-federated
@@ -93,7 +101,7 @@ Download the required CSV dataset files from the following links:
 8. Authenication: AWS Secrets Manager > Select the secret pre-created for you
 9. Click Add Data
 
-### 6. Create a target table in Redshift
+### 10. Create a target table in Redshift
 We will set up an ETL pipeline later, we will first create the schema for the target table in Redshift
 1. Build > Query Editor
 2. Select Redshift connection, dev database, project schema. Click choose
@@ -113,7 +121,7 @@ CREATE TABLE project.combined_sales_store (
 );
 ```
 
-### 7. Transforming Data in SageMaker Unified Studio (Visual ETL and Juypter Notebooks)
+### 11. Transforming Data in SageMaker Unified Studio (Visual ETL and Juypter Notebooks)
 1. Select Visual ETL Flows in the topbar
 2. <img width="1037" height="237" alt="image" src="https://github.com/user-attachments/assets/18fec5ad-2a1b-4b59-9166-f6cab3efcbe8" />
 3. Create visual ETL flow
@@ -145,16 +153,41 @@ CREATE TABLE project.combined_sales_store (
 14. Click Update Project. Edit the job name. Select G.4X for instance type.
 15. Click Update.
 
-### 8. Querying Transformed Data using Amazon Redshift
+### 12. Run ETL Job in Visual ETL Flows
+1. Select your ETL flow > Click Run
+2. Click "View Runs" to see the progress of your ETL runs.
+3. <img width="1027" height="537" alt="image" src="https://github.com/user-attachments/assets/6f297198-d8d9-4cb8-a672-a4a52fff61c8" />
+4. It should show succeeded. If failed, click the error message to troubleshoot.
 
-### 9. 
+### 13. Querying Target Table in Amazon Redshift
+1. Build > Query Editor
+2. Query the target table in Redshift
+```sql
+SELECT * FROM project.combined_sales_store LIMIT 10;
+```
 
-## Workshop Modules
+### 14. Adding Redshift Dataset to QuickSight
+1. Enter QuickSight console > Datasets > New Dataset > Redshift (Manual Connect)
+   - Data Source Name: combined_sales_store
+   - Connection Type: sagemaker-xxx-vpc-connection
+   - Database Server: eg. redshift-serverless-workgroup-<xxx>.<AWSACCOUNTID>.ap-southeast-1.redshift-serverless.amazonaws.com
+   - Port: 5439
+   - Database Name: dev
+   - Username: Retrieve from Secrets Manager
+   - Password: Retrieve from Secrets Manager
+   - Click Validate
+   - Click Create Data Source
+   - Schema: project
+   - Table: combined_sales_store
+   - Click Select
+   - Select "Directly query your data"
+   - Click Visualize
 
-1. **Data Ingestion** - Learn how to import your CSV files into SageMaker
-2. **Data Exploration and Preparation** - Use SageMaker Data Wrangler to clean and transform your data
-3. **Machine Learning** - Build and deploy a simple ML model
-4. **Visualization with QuickSight** - Create interactive dashboards
+### 15. Creating QuickSight Visualizations
+1. Create a line chart:
+   - X Axis: date (Quarter)
+   - Value: sales_amount
+   - Color: store_state
 
 ## Troubleshooting
 
@@ -165,9 +198,7 @@ CREATE TABLE project.combined_sales_store (
 ## Clean Up
 
 To avoid incurring unnecessary charges after completing the workshop:
-1. Delete any deployed endpoints and models
-2. Stop notebook instances
-3. Delete Studio domain if no longer needed
+1. Delete Studio domain if no longer needed
 
 ## Support
 
