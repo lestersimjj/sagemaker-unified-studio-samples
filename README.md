@@ -12,7 +12,7 @@ AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
 
 ## Setup Instructions
 
-### 1. IAM Identity Center Configuration
+### IAM Identity Center Configuration
 
 Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 
@@ -23,7 +23,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 5. Create IAM User > dg-corp-admin. Add this user under anycompany-admin group.
 7. Create IAM User > dg-business-analyst. Add this user under anycompany-salesmarketing group.
 
-### 2. Sign up for QuickSight
+### Sign up for QuickSight
 1. Navigate to QuickSight console and sign up for QuickSight
 2. Authentication Method > Use AWS IAM Identity Center
 3. QuickSight region > ap-southeast-1
@@ -31,7 +31,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 5. For assigning permissions, click show more. Add anycompany-admin under Admin Pro group. Add anycompany-salesmarketing under Reader Pro group.
 6. Uncheck "Add Pixel-Perfect Reports"
 
-### 3. Create a VPC
+### Create a VPC
 1. Resources to create: VPC and more
 2. Name the VPC: sagemaker-workshop
 3. Number of AZs: 3 public subnets, 3 private subnets
@@ -39,7 +39,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 5. VPC Endpoints: None
 6. S3 Gateway Endpoint: 1
 
-### 4. Create Amazon SageMaker Studio Domain
+### Create Amazon SageMaker Studio Domain
 1. Navigate to the Amazon SageMaker console
 2. Select "Create a Unified Studio domain"
 3. Quick setup
@@ -53,7 +53,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 11. Click Create Domain
 12. User Management > Add User: dg-business-analyst
 
-### 5. Enable QuickSight Blueprint in SageMaker Unified Studio
+### Enable QuickSight Blueprint in SageMaker Unified Studio
 1. Access the SageMaker Unified Studio console
 2. Click Blueprints > Select QuickSight > Click Enable
 3. Leave the others as default
@@ -66,12 +66,12 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 10. Blueprint: Select QuickSight
 11. Click Add blueprint deployment settings
 
-### 6. Download Workshop Data
+### Download Workshop Data
 Download the required CSV dataset files from the following links:
 - [retail_sales_performance.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/retail_sales_performance.csv)
 - [store_details.csv](https://redshift-demos.s3.us-east-1.amazonaws.com/data/salesmarketing/lakehouse/store_details.csv)
 
-### 7. Opening SageMaker Unified Studio
+### Opening SageMaker Unified Studio
 1. Select Open Unified Studio from your SageMaker domain created earlier
 2. Login with SSO using dg-corp-admin
 3. Click Create Project
@@ -82,7 +82,7 @@ Download the required CSV dataset files from the following links:
 8. QuickSight > Restrictured Folder Name: quicksight-sagemaker-folder
 9. Continue > Create Project
 
-### 8. Importing Datasets to SageMaker Unified Studio
+### Importing Datasets to SageMaker Unified Studio
 1. Select Data > Click on the "+" button to add datasets to SageMaker Lakehouse > Select "Create Table"
 2. <img width="1499" height="771" alt="image" src="https://github.com/user-attachments/assets/588b4377-b7fb-4aa2-9cca-375e55c938a8" />
 3. Add data by uploading the retail_sales_perfomance.csv file
@@ -92,7 +92,7 @@ Download the required CSV dataset files from the following links:
 7. <img width="1493" height="531" alt="image" src="https://github.com/user-attachments/assets/4852cada-5e8f-49e0-8dc1-6b79b74b664f" />
 8. <img width="1501" height="665" alt="image" src="https://github.com/user-attachments/assets/a56edc62-462e-4b93-aa03-6245f513d4ad" />
 
-### 9. Add Federated Redshift Catalog 
+### Add Federated Redshift Catalog 
 1. Data > "+" Button > Add connection
 2. Select Amazon Redshift
 4. Name: redshift-federated
@@ -102,7 +102,7 @@ Download the required CSV dataset files from the following links:
 8. Authenication: AWS Secrets Manager > Select the secret pre-created for you
 9. Click Add Data
 
-### 10. Create a target table in Redshift
+### Create a target table in Redshift
 We will set up an ETL pipeline later, we will first create the schema for the target table in Redshift
 1. Build > Query Editor
 2. Select Redshift connection, dev database, project schema. Click choose
@@ -122,7 +122,7 @@ CREATE TABLE project.combined_sales_store (
 );
 ```
 
-### 11. Transforming Data in SageMaker Unified Studio (Visual ETL and Juypter Notebooks)
+### Transforming Data in SageMaker Unified Studio (Visual ETL and Juypter Notebooks)
 1. Select Visual ETL Flows in the topbar
 2. <img width="1037" height="237" alt="image" src="https://github.com/user-attachments/assets/18fec5ad-2a1b-4b59-9166-f6cab3efcbe8" />
 3. Create visual ETL flow
@@ -154,53 +154,94 @@ CREATE TABLE project.combined_sales_store (
 14. Click Update Project. Edit the job name. Select G.4X for instance type.
 15. Click Update.
 
-### 12. Run ETL Job in Visual ETL Flows
+### Run ETL Job in Visual ETL Flows
 1. Select your ETL flow > Click Run
 2. Click "View Runs" to see the progress of your ETL runs.
 3. <img width="1027" height="537" alt="image" src="https://github.com/user-attachments/assets/6f297198-d8d9-4cb8-a672-a4a52fff61c8" />
 4. It should show succeeded. If failed, click the error message to troubleshoot.
 
-### 13. Querying Target Table in Amazon Redshift
+### Querying Target Table in Amazon Redshift
 1. Build > Query Editor
 2. Query the target table in Redshift
 ```sql
 SELECT * FROM project.combined_sales_store LIMIT 10;
 ```
 
-### 14. Adding Redshift Dataset to QuickSight
-1. Enter QuickSight console > Datasets > New Dataset > Redshift (Manual Connect)
-   - Data Source Name: combined_sales_store
-   - Connection Type: sagemaker-xxx-vpc-connection
-   - Database Server: eg. redshift-serverless-workgroup-<xxx>.<AWSACCOUNTID>.ap-southeast-1.redshift-serverless.amazonaws.com
-   - Port: 5439
-   - Database Name: dev
-   - Username: Retrieve from Secrets Manager
-   - Password: Retrieve from Secrets Manager
-   - Click Validate
-   - Click Create Data Source
-   - Schema: project
-   - Table: combined_sales_store
-   - Click Select
-   - Select "Directly query your data"
-   - Click Visualize
+### Adding Redshift Dataset to Project Catalog in SageMaker Unified Studio
+1. Project Catalog > Data Sources > Create Data Source
+2. Data Source Name: data_source_combined_sales_store
+3. Data Source Type: Redshift
+4. Connection: project.redshift
+5. Data Selection > Schema: project
+6. Data Selection > Table: combined_sales_store
+7. Click Next
+8. Publish assets to catalog: Yes
+9. Click Next
+10. Run preference: Run on demand
+11. Click Create
 
-### 15. Creating QuickSight Visualizations
+### Adding Assets in Unified Studio to QuickSight
+1. Project Catalog > Assets
+2. Click on "combined_sales_store" asset
+3. Select Actions > Open in QuickSight. SageMaker Unified Studio creates a QuickSight dataset and organizes it in a secured folder accessible only to members within the project.
+4. <img width="1501" height="385" alt="image" src="https://github.com/user-attachments/assets/08d23d8f-fdc8-41c9-a687-9869522758ba" />
+5. Create an analysis in QuickSight with the imported dataset
+
+### Creating QuickSight Visualizations
 1. Create a line chart:
-   - X Axis: date (Quarter)
-   - Value: sales_amount
-   - Color: store_state
+    - X Axis: date (Quarter)
+    - Value: sales_amount
+2. Create a line chart:
+    - X Axis: date (Quarter)
+    - Value: units_sold
+3. Create a horizontal stacked bar chart:
+    - Y Axis: store_city
+    - Value: sales_amount
+    - Group: store_state
+2. Create a horizontal stacked bar chart:
+    - Y Axis: store_city
+    - Value: units_sold
+    - Group: product_id
+
 
 ## Troubleshooting
-
 - **Permission Issues**: Verify IAM permissions are correctly assigned
 - **Domain Creation Failures**: Check VPC settings and service quotas
 - **QuickSight Integration Problems**: Ensure subscription is active and properly configured
 
 ## Clean Up
+To prevent ongoing AWS charges after completing the workshop, it's important to clean up and delete the resources you've created. Here's a suggested cleanup process:
+1. Delete QuickSight resources:
+   - Delete any analyses and dashboards created in QuickSight
+   - Delete the QuickSight dataset created from the Redshift table
+   - Unsubscribe from QuickSight if you no longer need it
 
-To avoid incurring unnecessary charges after completing the workshop:
-1. Delete Studio domain if no longer needed
+2. Clean up SageMaker Unified Studio:
+   - Delete the project created (sagemaker-workshop-project)
+   - Delete any notebooks or other files created in the Studio environment
+   - Delete the SageMaker Studio Domain (sagemaker-workshop-domain)
+
+3. Delete Redshift resources:
+   - Delete the table created in Redshift (project.combined_sales_store)
+   - If a Redshift cluster was created specifically for this workshop, delete it
+
+4. Clean up S3:
+   - Delete any S3 buckets created for this workshop, including those automatically created by SageMaker
+
+5. Delete the VPC:
+   - Delete the VPC endpoints
+   - Delete the NAT Gateway
+   - Delete the VPC (sagemaker-workshop)
+
+6. IAM cleanup:
+   - Remove the IAM users created (dg-corp-admin, dg-business-analyst)
+   - Delete the IAM groups created (anycompany-admin, anycompany-salesmarketing)
+   - Review and delete any IAM roles created for this workshop
+
+7. Disable IAM Identity Center:
+   - If you enabled IAM Identity Center solely for this workshop, you may want to disable it
+
+Remember to be cautious when deleting resources, as this process is irreversible. Always double-check before deleting any resource to ensure you're not removing anything critical to other projects or applications.
 
 ## Support
-
 For questions or issues during the workshop, please contact the workshop facilitators or open an issue in this repository.
