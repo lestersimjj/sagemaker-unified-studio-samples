@@ -1,4 +1,4 @@
-# AWS Analytics Workshop
+<img width="1501" height="665" alt="image" src="https://github.com/user-attachments/assets/55722003-d425-4290-9da0-98958def17bb" /># AWS Analytics Workshop
 This README guides participants through setting up a unified analytics environment using Amazon SageMaker Studio and visualizing data in Amazon QuickSight.
 
 AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
@@ -74,12 +74,34 @@ Download the required CSV dataset files from the following links:
 9. Continue > Create Project
 
 ### 6. Importing Datasets to SageMaker Unified Studio
-1. <img width="1499" height="771" alt="image" src="https://github.com/user-attachments/assets/588b4377-b7fb-4aa2-9cca-375e55c938a8" />
-2. Add data by uploading the CSV file
-3. <img width="841" height="758" alt="image" src="https://github.com/user-attachments/assets/a312ac16-3580-4d0e-bcc1-8997e96b164a" />
+1. Select Data > Click on the "+" button to add datasets to SageMaker Lakehouse > Select "Create Table"
+2. <img width="1499" height="771" alt="image" src="https://github.com/user-attachments/assets/588b4377-b7fb-4aa2-9cca-375e55c938a8" />
+3. Add data by uploading the retail_sales_perfomance.csv file
+4. <img width="841" height="758" alt="image" src="https://github.com/user-attachments/assets/a312ac16-3580-4d0e-bcc1-8997e96b164a" />
+5. Repeat the same steps to upload store_details.csv file
+6. Once the datasets are imported, try to query them using Redshift or Athena
+7. <img width="1493" height="531" alt="image" src="https://github.com/user-attachments/assets/4852cada-5e8f-49e0-8dc1-6b79b74b664f" />
+8. <img width="1501" height="665" alt="image" src="https://github.com/user-attachments/assets/a56edc62-462e-4b93-aa03-6245f513d4ad" />
+
+### 7. Transforming Data in SageMaker Unified Studio (Visual ETL and Juypter Notebooks)
+1. Select Visual ETL Flows in the topbar
+2. <img width="1037" height="237" alt="image" src="https://github.com/user-attachments/assets/18fec5ad-2a1b-4b59-9166-f6cab3efcbe8" />
+3. Create visual ETL flow
+4. Select "Data managed using full-data access"
+5. Select "SageMaker Lakehouse" as data source
+    - Catalog: AwsDataCatalog
+    - Database: lakehouse_db_***
+    - Table: retail_sales_performance
+    - Click "Update Node"
+    - Rename the node to retail_sales_performance
+6. Select "SageMaker Lakehouse" as data source
+    - Catalog: AwsDataCatalog
+    - Database: lakehouse_db_***
+    - Table: store_details
+    - Click "Update Node"
+    - Rename the node to store_details
 
 
-### 7. Transforming Data in SageMaker Unified Studio
 
 ### 8. Querying Transformed Data using Amazon Redshift
 
