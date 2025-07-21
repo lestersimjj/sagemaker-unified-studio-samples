@@ -83,6 +83,36 @@ Download the required CSV dataset files from the following links:
 7. <img width="1493" height="531" alt="image" src="https://github.com/user-attachments/assets/4852cada-5e8f-49e0-8dc1-6b79b74b664f" />
 8. <img width="1501" height="665" alt="image" src="https://github.com/user-attachments/assets/a56edc62-462e-4b93-aa03-6245f513d4ad" />
 
+### 6. Add Federated Redshift Catalog 
+1. Data > "+" Button > Add connection
+2. Select Amazon Redshift
+4. Name: redshift-federated
+5. Host name: eg. redshift-serverless-workgroup-<xxx>.<AWSACCOUNTID>.ap-southeast-1.redshift-serverless.amazonaws.com
+6. Port: 5439
+7. Database: dev
+8. Authenication: AWS Secrets Manager > Select the secret pre-created for you
+9. Click Add Data
+
+### 6. Create a target table in Redshift
+We will set up an ETL pipeline later, we will first create the schema for the target table in Redshift
+1. Build > Query Editor
+2. Select Redshift connection, dev database, project schema. Click choose
+3. <img width="1488" height="518" alt="image" src="https://github.com/user-attachments/assets/37f5eceb-46d6-4980-98b9-60f4860786e0" />
+4. Enter this SQL query to create the table schema for the transformed table
+```sql
+CREATE TABLE project.combined_sales_store (
+    date DATE,
+    store_id VARCHAR(20),
+    product_id VARCHAR(20),
+    sales_amount DECIMAL(10,2),
+    units_sold INTEGER,
+    store_name VARCHAR(100),
+    store_city VARCHAR(50),
+    store_state CHAR(2),
+    store_zip VARCHAR(5)
+);
+```
+
 ### 7. Transforming Data in SageMaker Unified Studio (Visual ETL and Juypter Notebooks)
 1. Select Visual ETL Flows in the topbar
 2. <img width="1037" height="237" alt="image" src="https://github.com/user-attachments/assets/18fec5ad-2a1b-4b59-9166-f6cab3efcbe8" />
@@ -94,14 +124,26 @@ Download the required CSV dataset files from the following links:
     - Table: retail_sales_performance
     - Click "Update Node"
     - Rename the node to retail_sales_performance
-6. Select "SageMaker Lakehouse" as data source
+6. Add Rename node. Rename stored_id to stored_id_performance. 
+7. Select "SageMaker Lakehouse" as data source
     - Catalog: AwsDataCatalog
     - Database: lakehouse_db_***
     - Table: store_details
     - Click "Update Node"
     - Rename the node to store_details
-
-
+8. Add Rename node. Rename stored_id to stored_id_details.
+9. Add Join node. Left Data Source is stored_id_performance, Right Data Source is stored_id_details.
+10. Add Drop Column node. Drop stored_id_details, store_open_date, store_closed_date.
+11. Add Change Column node to change some data types. Change date column from string to date data type.
+12. Add Target > Redshift.
+    - Name: redshift-federated
+    - Schema: project
+    - Table: combined_sales_store
+    - Mode: Overwrite
+    - Click Update Node
+13. <img width="1502" height="732" alt="image" src="https://github.com/user-attachments/assets/3cc35c6b-bd48-43da-afab-9a341ba9c564" />
+14. Click Update Project. Edit the job name. Select G.4X for instance type.
+15. Click Update.
 
 ### 8. Querying Transformed Data using Amazon Redshift
 
