@@ -51,6 +51,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 9. Click continue
 10. Create IAM Identity Center User: dg-corp-admin
 11. Click Create Domain
+12. User Management > Add User: dg-business-analyst
 
 ### 5. Enable QuickSight Blueprint in SageMaker Unified Studio
 1. Access the SageMaker Unified Studio console
