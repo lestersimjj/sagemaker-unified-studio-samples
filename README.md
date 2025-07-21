@@ -1,4 +1,4 @@
-<img width="1501" height="665" alt="image" src="https://github.com/user-attachments/assets/55722003-d425-4290-9da0-98958def17bb" /># AWS Analytics Workshop
+# AWS Analytics Workshop
 This README guides participants through setting up a unified analytics environment using Amazon SageMaker Studio and visualizing data in Amazon QuickSight.
 
 AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
