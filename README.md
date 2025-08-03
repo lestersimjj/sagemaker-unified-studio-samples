@@ -44,6 +44,7 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
     - First/Last Name: Enter your name
     - Groups: anycompany-salesmarketing
 14. Repeat the same steps above to note down the one-time password.
+15. You should have 2 users as shown below:
 <img width="1507" height="271" alt="image" src="https://github.com/user-attachments/assets/f2ba7634-2ece-48cc-9f18-97b0c86f8693" />
 
 ### Sign up for QuickSight
