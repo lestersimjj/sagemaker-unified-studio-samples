@@ -33,8 +33,10 @@ Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
     - Groups: anycompany-admin
 <img width="1073" height="684" alt="image" src="https://github.com/user-attachments/assets/4594e757-7bed-450a-b0b1-ac62fbe16aba" />
 <img width="1489" height="317" alt="image" src="https://github.com/user-attachments/assets/1fb3a17a-79f9-451d-bfba-2868898e14b6" />
+
 11. Copy the one-time password and paste in your local notepad as we'll need to login in subsequent steps.
 12. <img width="585" height="461" alt="image" src="https://github.com/user-attachments/assets/ab57a94e-148d-4bb4-bc12-7daafaddcd4a" />
+
 13. Create another IAM User
     - Username: dg-business-analyst
     - Password: "Generate a one-time password that you can share with this user"
