@@ -70,13 +70,17 @@ Set up AWS IAM Identity Center:
 7. You should see the homepage of QuickSight as below:
    <img width="1505" height="704" alt="image" src="https://github.com/user-attachments/assets/fa37ec57-878a-4419-b55e-ca47fde5446f" />
 
-### Create a VPC
-1. Resources to create: VPC and more
-2. Name the VPC: sagemaker-workshop
-3. Number of AZs: 3 public subnets, 3 private subnets
-4. NAT Gateway: In 1 AZ
-5. VPC Endpoints: None
-6. S3 Gateway Endpoint: 1
+### Create a VPC (Optional)
+1. If you are using a workshop account, you can skip this step.
+2. Run the following command to deploy a dedicated SageMaker VPC with 3 public + 3 private subnets. We'll deploy SageMaker Unified Studio into this VPC later.
+
+```bash
+aws cloudformation create-stack \
+  --stack-name sagemaker-infrastructure \
+  --template-url https://raw.githubusercontent.com/lestersimjj/sagemaker-unified-studio-samples/main/sagemaker-infrastructure.yaml \
+  --capabilities CAPABILITY_IAM \
+  --region ap-southeast-1
+```
 
 ### Create Amazon SageMaker Studio Domain
 1. Navigate to the Amazon SageMaker console
