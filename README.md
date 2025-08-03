@@ -71,16 +71,18 @@ Set up AWS IAM Identity Center:
    <img width="1505" height="704" alt="image" src="https://github.com/user-attachments/assets/fa37ec57-878a-4419-b55e-ca47fde5446f" />
 
 ### Create a VPC (Optional)
+We'll create a dedicated SageMaker VPC with 3 public + 3 private subnets. We'll deploy SageMaker Unified Studio into this VPC later.
 1. If you are using a workshop account, you can skip this step.
-2. Run the following command to deploy a dedicated SageMaker VPC with 3 public + 3 private subnets. We'll deploy SageMaker Unified Studio into this VPC later.
-
-```bash
-aws cloudformation create-stack \
-  --stack-name sagemaker-infrastructure \
-  --template-url https://raw.githubusercontent.com/lestersimjj/sagemaker-unified-studio-samples/main/sagemaker-infrastructure.yaml \
-  --capabilities CAPABILITY_IAM \
-  --region ap-southeast-1
-```
+2. Download sagemaker-infrastructure.yaml file from this Github repo.
+3. Search for CloudFormation > Create Stack
+   - Choose an existing template
+   - Specify Template: Upload a template file. Upload the downloaded template file.
+   - Click Next
+   - Stack Name: eg. sagemaker-vpc
+   - Click Next
+   - Leave as defaults
+   - Click Next > Click Submit
+   - <img width="1510" height="493" alt="image" src="https://github.com/user-attachments/assets/41902dee-4644-4ff0-a0b4-1e98414592ca" />
 
 ### Create Amazon SageMaker Studio Domain
 1. Navigate to the Amazon SageMaker console
