@@ -111,9 +111,9 @@ We'll create a dedicated SageMaker VPC with 3 public + 3 private subnets. We'll 
 3. Leave the others as default
 4. Click Enable blueprint
 5. Return back to SageMaker Unified Studio Console. Select Project Profiles > Click All Capabilities
-<img width="1488" height="329" alt="image" src="https://github.com/user-attachments/assets/738875b9-d5b4-4c17-9704-98158b87ab0a" />
+   <img width="1488" height="329" alt="image" src="https://github.com/user-attachments/assets/738875b9-d5b4-4c17-9704-98158b87ab0a" />
 7. Under Blueprint deployment settings > Add blueprint deployment settings
-<img width="1475" height="619" alt="image" src="https://github.com/user-attachments/assets/50fe35ea-a79f-4365-911b-92aff807acec" />
+   <img width="1475" height="619" alt="image" src="https://github.com/user-attachments/assets/50fe35ea-a79f-4365-911b-92aff807acec" />
 9. Blueprint deployment settings name: quicksight-blueprint
 10. Blueprint: Select QuickSight
 11. Click Add blueprint deployment settings
