@@ -86,18 +86,25 @@ We'll create a dedicated SageMaker VPC with 3 public + 3 private subnets. We'll 
 
 ### Create Amazon SageMaker Studio Domain
 1. Navigate to the Amazon SageMaker console
-2. Select "Create a Unified Studio domain"
-3. Quick setup
-4. Expand Quick setup settings
-5. Domain Name: sagemaker-workshop-domain
-6. VPC: sagemaker-workshop
-7. Subnet: Select all 3 private subnets
-8. Leave the others as default
-9. Click continue
-10. Create IAM Identity Center User: dg-corp-admin
-11. Click Create Domain
-12. User Management > Add User: dg-business-analyst
-
+3. Select "Create a Unified Studio domain"
+   - <img width="1061" height="421" alt="image" src="https://github.com/user-attachments/assets/02af4a34-699e-4705-8647-a0cc8d475e17" />
+   - Quick setup
+   - Expand Quick setup settings
+   - Domain Name: eg. sagemaker-workshop-domain
+   - VPC: sagemaker-workshop
+   - Subnet: Select all 3 private subnets
+   - Leave the others as default
+   - Click continue
+   - <img width="1481" height="684" alt="image" src="https://github.com/user-attachments/assets/530ac43b-b5e1-44f0-acf4-4e891fd2637a" />
+   - Create IAM Identity Center User: dg-corp-admin
+   - <img width="1494" height="458" alt="image" src="https://github.com/user-attachments/assets/9f81f788-333c-4fd7-9e9f-6800dbf258cd" />
+   - Click Create Domain
+14. Once the domain is created, click on User Management > Users
+   - Click Actions > Add SSO users and groups
+   - Add dg-business-analyst user
+   - <img width="1495" height="442" alt="image" src="https://github.com/user-attachments/assets/9fb643fb-7db5-4dd4-ba2a-2bf3dd7f935c" />
+   - <img width="1493" height="468" alt="image" src="https://github.com/user-attachments/assets/71808295-5d14-4b5f-8bd4-6fbbd52a0f8d" />
+   
 ### Enable QuickSight Blueprint in SageMaker Unified Studio
 1. Access the SageMaker Unified Studio console
 2. Click Blueprints > Select QuickSight > Click Enable
