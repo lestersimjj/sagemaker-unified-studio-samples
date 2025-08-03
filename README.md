@@ -17,19 +17,41 @@ AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
 Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
 
 1. Navigate to the IAM Identity Center console
-2. Click Enable
-3. Create IAM Group > anycompany-admin
-4. Create IAM Group > anycompany-salesmarketing
-5. Create IAM User > dg-corp-admin. Add this user under anycompany-admin group.
-7. Create IAM User > dg-business-analyst. Add this user under anycompany-salesmarketing group.
+2. <img width="1211" height="175" alt="image" src="https://github.com/user-attachments/assets/6341e0b0-22ec-4a3b-a0f3-628c6b7d192d" />
+3. Click Enable
+4. <img width="1055" height="368" alt="image" src="https://github.com/user-attachments/assets/bc560a00-f36e-4b9d-9637-9dbe98a7f929" />
+5. <img width="1485" height="648" alt="image" src="https://github.com/user-attachments/assets/6bb55aba-1eae-42ad-83cc-28e09cbf496b" />
+6. Create IAM Group > anycompany-admin
+7. <img width="1498" height="304" alt="image" src="https://github.com/user-attachments/assets/3f958d1d-dac3-490f-857b-91eeb967fe41" />
+8. <img width="1490" height="671" alt="image" src="https://github.com/user-attachments/assets/020905f9-5bc4-4380-98ed-d80098315ae1" />
+9. Create another IAM Group > anycompany-salesmarketing
+10. Create IAM User
+    - Username: dg-corp-admin
+    - Password: "Generate a one-time password that you can share with this user"
+    - Email: Enter your email
+    - First/Last Name: Enter your name
+    - Groups: anycompany-admin
+<img width="1073" height="684" alt="image" src="https://github.com/user-attachments/assets/4594e757-7bed-450a-b0b1-ac62fbe16aba" />
+<img width="1489" height="317" alt="image" src="https://github.com/user-attachments/assets/1fb3a17a-79f9-451d-bfba-2868898e14b6" />
+11. Copy the one-time password and paste in your local notepad as we'll need to login in subsequent steps.
+12. <img width="585" height="461" alt="image" src="https://github.com/user-attachments/assets/ab57a94e-148d-4bb4-bc12-7daafaddcd4a" />
+13. Create another IAM User
+    - Username: dg-business-analyst
+    - Password: "Generate a one-time password that you can share with this user"
+    - Email: Enter your email
+    - First/Last Name: Enter your name
+    - Groups: anycompany-salesmarketing
+14. Repeat the same steps above to note down the one-time password.
+<img width="1507" height="271" alt="image" src="https://github.com/user-attachments/assets/f2ba7634-2ece-48cc-9f18-97b0c86f8693" />
 
 ### Sign up for QuickSight
 1. Navigate to QuickSight console and sign up for QuickSight
-2. Authentication Method > Use AWS IAM Identity Center
-3. QuickSight region > ap-southeast-1
-4. QuickSight account name > eg. quicksight-21072025
-5. For assigning permissions, click show more. Add anycompany-admin under Admin Pro group. Add anycompany-salesmarketing under Reader Pro group.
-6. Uncheck "Add Pixel-Perfect Reports"
+<img width="1212" height="180" alt="image" src="https://github.com/user-attachments/assets/b2594a90-d7f2-42be-b6be-a3b936598097" />
+3. Authentication Method > Use AWS IAM Identity Center
+4. QuickSight region > ap-southeast-1
+5. QuickSight account name > eg. quicksight-21072025
+6. For assigning permissions, click show more. Add anycompany-admin under Admin Pro group. Add anycompany-salesmarketing under Reader Pro group.
+7. Uncheck "Add Pixel-Perfect Reports"
 
 ### Create a VPC
 1. Resources to create: VPC and more
