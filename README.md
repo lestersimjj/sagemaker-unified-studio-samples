@@ -15,7 +15,7 @@ AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
 ### IAM Identity Center Configuration
 Set up AWS IAM Identity Center:
 1. Navigate to the IAM Identity Center console
-2. <img width="1211" height="175" alt="image" src="https://github.com/user-attachments/assets/6341e0b0-22ec-4a3b-a0f3-628c6b7d192d" />
+   <img width="1211" height="175" alt="image" src="https://github.com/user-attachments/assets/6341e0b0-22ec-4a3b-a0f3-628c6b7d192d" />
 3. Click Enable
    <img width="1055" height="368" alt="image" src="https://github.com/user-attachments/assets/bc560a00-f36e-4b9d-9637-9dbe98a7f929" />
    <img width="1485" height="648" alt="image" src="https://github.com/user-attachments/assets/6bb55aba-1eae-42ad-83cc-28e09cbf496b" />
