@@ -13,48 +13,62 @@ AWS Region for this workshop: **ap-southeast-1 (Singapore Region)**
 ## Setup Instructions
 
 ### IAM Identity Center Configuration
-
-Set up AWS IAM Identity Center (successor to AWS Single Sign-On):
-
+Set up AWS IAM Identity Center:
 1. Navigate to the IAM Identity Center console
 2. <img width="1211" height="175" alt="image" src="https://github.com/user-attachments/assets/6341e0b0-22ec-4a3b-a0f3-628c6b7d192d" />
 3. Click Enable
-4. <img width="1055" height="368" alt="image" src="https://github.com/user-attachments/assets/bc560a00-f36e-4b9d-9637-9dbe98a7f929" />
-5. <img width="1485" height="648" alt="image" src="https://github.com/user-attachments/assets/6bb55aba-1eae-42ad-83cc-28e09cbf496b" />
-6. Create IAM Group > anycompany-admin
-7. <img width="1498" height="304" alt="image" src="https://github.com/user-attachments/assets/3f958d1d-dac3-490f-857b-91eeb967fe41" />
-8. <img width="1490" height="671" alt="image" src="https://github.com/user-attachments/assets/020905f9-5bc4-4380-98ed-d80098315ae1" />
-9. Create another IAM Group > anycompany-salesmarketing
-10. Create IAM User
+   <img width="1055" height="368" alt="image" src="https://github.com/user-attachments/assets/bc560a00-f36e-4b9d-9637-9dbe98a7f929" />
+   <img width="1485" height="648" alt="image" src="https://github.com/user-attachments/assets/6bb55aba-1eae-42ad-83cc-28e09cbf496b" />
+4. Create IAM Group > anycompany-admin
+   <img width="1498" height="304" alt="image" src="https://github.com/user-attachments/assets/3f958d1d-dac3-490f-857b-91eeb967fe41" />
+   <img width="1490" height="671" alt="image" src="https://github.com/user-attachments/assets/020905f9-5bc4-4380-98ed-d80098315ae1" />
+5. Create another IAM Group > anycompany-salesmarketing
+6. Create IAM User
     - Username: dg-corp-admin
     - Password: "Generate a one-time password that you can share with this user"
     - Email: Enter your email
     - First/Last Name: Enter your name
     - Groups: anycompany-admin
-<img width="1073" height="684" alt="image" src="https://github.com/user-attachments/assets/4594e757-7bed-450a-b0b1-ac62fbe16aba" />
-<img width="1489" height="317" alt="image" src="https://github.com/user-attachments/assets/1fb3a17a-79f9-451d-bfba-2868898e14b6" />
+    <img width="1073" height="684" alt="image" src="https://github.com/user-attachments/assets/4594e757-7bed-450a-b0b1-ac62fbe16aba" />
+    <img width="1489" height="317" alt="image" src="https://github.com/user-attachments/assets/1fb3a17a-79f9-451d-bfba-2868898e14b6" />
 
-11. Copy the one-time password and paste in your local notepad as we'll need to login in subsequent steps.
-12. <img width="585" height="461" alt="image" src="https://github.com/user-attachments/assets/ab57a94e-148d-4bb4-bc12-7daafaddcd4a" />
+7. Copy the one-time password and paste in your local notepad as we'll need to login in subsequent steps.
+   <img width="585" height="461" alt="image" src="https://github.com/user-attachments/assets/ab57a94e-148d-4bb4-bc12-7daafaddcd4a" />
 
-13. Create another IAM User
+8. Create another IAM User
     - Username: dg-business-analyst
     - Password: "Generate a one-time password that you can share with this user"
     - Email: Enter your email
     - First/Last Name: Enter your name
     - Groups: anycompany-salesmarketing
-14. Repeat the same steps above to note down the one-time password.
-15. You should have 2 users as shown below:
-<img width="1507" height="271" alt="image" src="https://github.com/user-attachments/assets/f2ba7634-2ece-48cc-9f18-97b0c86f8693" />
+9. Repeat the same steps above to note down the one-time password.
+10. You should have 2 users as shown below:
+    <img width="1507" height="271" alt="image" src="https://github.com/user-attachments/assets/f2ba7634-2ece-48cc-9f18-97b0c86f8693" />
 
 ### Sign up for QuickSight
 1. Navigate to QuickSight console and sign up for QuickSight
-<img width="1212" height="180" alt="image" src="https://github.com/user-attachments/assets/b2594a90-d7f2-42be-b6be-a3b936598097" />
-3. Authentication Method > Use AWS IAM Identity Center
-4. QuickSight region > ap-southeast-1
-5. QuickSight account name > eg. quicksight-21072025
-6. For assigning permissions, click show more. Add anycompany-admin under Admin Pro group. Add anycompany-salesmarketing under Reader Pro group.
-7. Uncheck "Add Pixel-Perfect Reports"
+   <img width="1212" height="180" alt="image" src="https://github.com/user-attachments/assets/b2594a90-d7f2-42be-b6be-a3b936598097" />
+   <img width="995" height="414" alt="image" src="https://github.com/user-attachments/assets/716ca1de-5628-4044-9956-a77454b1651f" />
+
+2. Enter the following details:
+   - Email: Enter your email
+   - Authentication Method: Use AWS IAM Identity Center
+   - QuickSight Region: Asia Pacific (Singapore)
+   - QuickSight account name: eg. quicksight-account-03092025
+   - <img width="1505" height="733" alt="image" src="https://github.com/user-attachments/assets/f5024f71-70a7-44f6-bb76-f004e84cc51c" />
+   - Click Configure
+   - Click Show more roles
+   - Add anycompany-admin to Admin Pro Group
+   - Add anycompany-salesmarketing to Reader Pro Group
+   - <img width="970" height="494" alt="image" src="https://github.com/user-attachments/assets/ab2069d2-6204-421d-8fb8-f8be9cea4f08" />
+3. QuickSight access to AWS services: Leave as default.
+4. Uncheck "Add Pixel-Perfect Reports"
+5. Click Finish
+6. Once the QuickSight account creation is completed, click "Go to QuickSight"
+   <img width="1506" height="580" alt="image" src="https://github.com/user-attachments/assets/edd887b7-0294-4414-af67-81912c621a65" />
+   
+7. You should see the homepage of QuickSight as below:
+   <img width="1505" height="704" alt="image" src="https://github.com/user-attachments/assets/fa37ec57-878a-4419-b55e-ca47fde5446f" />
 
 ### Create a VPC
 1. Resources to create: VPC and more
